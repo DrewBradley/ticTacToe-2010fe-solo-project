@@ -20,14 +20,15 @@ Personal Checkin:
   - How do you feel about the progress of the proect so far?
 
 ### Strengths & Weaknesses (consider discussing your Pairin qualities here):
-Strengths:
-  - 
+#### Strengths:
+  - HTML and CSS
+  - logical approach to JavaScript and test
   
-Weaknesses:
-  -
+#### Weaknesses:
+  - Attention to details outlined in the spec sheet
 
-How we can use our strengths to overcome obstacles: 
-  - 
+#### How can we use our strengths to overcome obstacles: 
+  - Return to and review the spec sheet EVERY DAY! Before and after work. Update Kanban accordingly!
   
 ### Schedule Expectations: 
  Thursday: Project work hours + 6:30PM - 8PM
