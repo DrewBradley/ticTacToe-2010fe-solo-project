@@ -59,7 +59,7 @@ html, body {
 
 .game-grid {
     display: grid;
-    padding: 10%;
+    padding: 2%;
     grid-template-areas: 
     'c1 c2 c3'
     'b1 b2 b3'
