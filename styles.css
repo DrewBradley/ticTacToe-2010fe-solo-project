@@ -39,13 +39,13 @@ body {
 }
 
 .game-board {
-    width: 60%;
+    width: 55%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 1%;
+    /* padding-bottom: 1%; */
     padding-top: 0.5%;
-    background-color: rgb(255, 255, 255, 0.5);
+    background-color: rgb(255, 255, 255, 0.7);
     border-radius: 10px;
 }
 
@@ -56,21 +56,28 @@ body {
 
 .game-grid {
     display: grid;
+    padding-bottom: 2%;
     grid-template-areas: 
     'c1 c2 c3'
     'b1 b2 b3'
     'a1 a2 a3';
-    width: 70%;
-    height: auto;
-    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    margin: auto;
 }
 
 .square {
-    text-align: center;
-    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 225px;
-    width: 100%;
+    width: auto;
+    transition: ease-in 0.2s;
     font-size: 7em;
+}
+
+.square:hover {
+    background-color:rgba(197, 163, 163, 0.3);
 }
 
 .square:nth-child(1),
