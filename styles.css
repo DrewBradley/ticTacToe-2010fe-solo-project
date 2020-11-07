@@ -67,6 +67,9 @@ html, body {
 }
 
 .square {
+    background-color: inherit;
+    border: inherit;
+    outline: none;
     display: flex;
     justify-content: center;
     align-items: center;
