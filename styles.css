@@ -60,10 +60,7 @@ html, body {
 .game-grid {
     display: grid;
     padding: 2%;
-    grid-template-areas: 
-    'c1 c2 c3'
-    'b1 b2 b3'
-    'a1 a2 a3';
+    grid-template-columns: 33.3% 33.3% 33.3%;
     width: 80%;
     height: auto;
     margin: auto;
@@ -74,9 +71,7 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 200px;
-    width: auto;
     margin: 0;
-    padding: 0;
     transition: ease-in 0.2s;
     font-size: 7em;
     cursor: pointer;
