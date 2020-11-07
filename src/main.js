@@ -20,11 +20,15 @@ function showGame(game) {
 }
 
 function player1Win(){
-    announcement.innerText = '❌ WINS!'
+    announcement.innerText = "❌ WINS!"
 }
 
 function player2Win(){
-    announcement.innerText = '⭕️ WINS!'
+    announcement.innerText = "⭕️ WINS!"
+}
+
+function declareDraw(){
+    announcement.innerText = "DRAW!"
 }
 
 function timeout(ms) {
@@ -103,12 +107,14 @@ function selectSquare(event){
 
 function showTurn(player) {
     if (player === 'p1') {
-        if (announcement.innerText !== '❌ WINS!')
+        if (announcement.innerText !== "❌ WINS!")
+        if (announcement.innerText !== "DRAW!")
         announcement.innerText="⭕️'s TURN!"
         return;
     }
     if (player == 'p2') {
         if (announcement.innerText !== '⭕️ WINS!')
+        if (announcement.innerText !== "DRAW!")
         announcement.innerText="❌'s TURN!"
         return;
     }

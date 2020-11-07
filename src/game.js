@@ -30,7 +30,16 @@ class Game {
                 player2Win();
                 this.player2.wins.push(sorted2)
                 this.newGame(this.player1, this.player2);
+            }else{
+                this.findDraw();
             };
+        }
+    }
+    findDraw() {
+        var moves = this.playedMoves.sort().toString();
+        if (moves === 'a,b,c,d,e,f,g,h,i'){
+            declareDraw()
+            this.newGame(this.player1, this.player2);
         }
     }
     
