@@ -75,6 +75,8 @@ html, body {
     align-items: center;
     height: 200px;
     width: auto;
+    margin: 0;
+    padding: 0;
     transition: ease-in 0.2s;
     font-size: 7em;
     cursor: pointer;

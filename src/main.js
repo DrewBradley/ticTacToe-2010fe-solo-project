@@ -9,7 +9,6 @@ var squares = document.querySelectorAll('.square');
 gameGrid.addEventListener('click', selectSquare);
 
 var game = new Game(Date.now())
-var player = 'player1';
 
 function showGame(game) {
     var p1Moves = game.player1.moves;
@@ -18,13 +17,30 @@ function showGame(game) {
     showPlayerTwo(p2Moves);
     game.findWin(p1Moves, p2Moves);
     showWins(game);
-    if (announcement.innerText === '❌ WINS!' || announcement.innerText === '⭕️ WINS!'){
-        newGame(game.player1, game.player2);
-    }
 }
 
-function newGame(p1, p2) {
-    game = new Game(Date.now(), p1, p2);
+function player1Win(){
+    announcement.innerText = '❌ WINS!'
+}
+
+function player2Win(){
+    announcement.innerText = '⭕️ WINS!'
+}
+
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function clearBoard(){
+    await timeout(1000);
+    squares.forEach(node => {
+        node.innerText = '  ';
+    })
+    if(game.currentPlayer === 'p1'){
+        announcement.innerText = "❌'s TURN!"
+    }else{
+        announcement.innerText = "⭕️'s TURN!"
+    }    
 }
 
 function showPlayerOne(p1Moves){
@@ -47,7 +63,7 @@ function showPlayerTwo(p2Moves){
     }
 }
 
-function showWins(){
+function showWins(game){
     player1Box.children[1].innerText = `${game.player1.wins.length} WINS`;
     player2Box.children[1].innerText = `${game.player2.wins.length} WINS`;
 }
@@ -59,27 +75,25 @@ function selectSquare(event){
             return;
         }
         game.playedMoves.push(square.id);
-        if (player === 'player1'){
+        if (game.currentPlayer === 'p1'){
             game.player1.moves.push(square.id);
 
         }
-        if (player === 'player2'){
+        if (game.currentPlayer === 'p2'){
             game.player2.moves.push(square.id);
         }
     }
     showGame(game);
-    switchPlayer();
+    game.switchPlayer();
 }
 
-function switchPlayer() {
-    if (player === 'player1') {
-        player = 'player2';
+function showTurn(player) {
+    if (player === 'p1') {
         if (announcement.innerText !== '❌ WINS!')
         announcement.innerText="⭕️'s TURN!"
         return;
     }
-    if (player == 'player2') {
-        player = 'player1';
+    if (player == 'p2') {
         if (announcement.innerText !== '⭕️ WINS!')
         announcement.innerText="❌'s TURN!"
         return;
