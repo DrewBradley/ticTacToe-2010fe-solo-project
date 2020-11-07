@@ -1,16 +1,16 @@
 class Game {
-    constructor(id, p1, p2) {
+    constructor(id, p1, p2, loser) {
         this.id = id;
         this.player1 = p1 || new Player(Date.now(), '❌');
         this.player2 = p2 || new Player(Date.now(), '⭕️');
         this.playedMoves = [];
-        this.currentPlayer = 'p1';
+        this.currentPlayer = loser || 'p1';
     }
 
     newGame() {
         this.player1.moves = [];
         this.player2.moves = [];
-        game = new Game(Date.now(), this.player1, this.player2);
+        game = new Game(Date.now(), this.player1, this.player2, this.currentPlayer);
         showGame(game);
         clearBoard();
     }
