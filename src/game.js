@@ -20,7 +20,7 @@ class Game {
         var string2 = p2Moves.sort();
         var sorted1 = string1.toString();
         var sorted2 = string2.toString();
-        var winningArray = ['a1,a2,a3', 'b1,b2,b3', 'c1,c2,c3', 'a1,b1,c1', 'a2,b2,c2', 'a3,b3,c3', 'a1,b2,c3', 'a3,b2,c1', 'a1,b2,c1,c3', 'a3,a1,b2,c1'];
+        var winningArray = ['a,b,c', 'd,e,f', 'g,h,i', 'a,d,g', 'b,e,h', 'c,f,i', 'a,e,i', 'c,e,g'];
         for (var i = 0; i < winningArray.length; i++){
             if (sorted1.includes(winningArray[i])){
                 player1Win();
@@ -30,7 +30,16 @@ class Game {
                 player2Win();
                 this.player2.wins.push(sorted2)
                 this.newGame(this.player1, this.player2);
+            }else{
+                this.findDraw();
             };
+        }
+    }
+    findDraw() {
+        var moves = this.playedMoves.sort().toString();
+        if (moves === 'a,b,c,d,e,f,g,h,i'){
+            declareDraw()
+            this.newGame(this.player1, this.player2);
         }
     }
     
