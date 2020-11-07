@@ -32,15 +32,29 @@ function timeout(ms) {
 }
 
 async function clearBoard(){
+    disableSquares();
     await timeout(1000);
+    enableSquares();
     squares.forEach(node => {
-        node.innerText = '  ';
+        node.innerText = '';
     })
     if(game.currentPlayer === 'p1'){
         announcement.innerText = "❌'s TURN!"
     }else{
         announcement.innerText = "⭕️'s TURN!"
     }    
+}
+
+function disableSquares(){
+    squares.forEach(node => {
+        node.disabled = true;
+    })
+}
+
+function enableSquares(){
+    squares.forEach(node => {
+        node.disabled = false;
+    })
 }
 
 function showPlayerOne(p1Moves){
