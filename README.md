@@ -27,4 +27,4 @@ If you need to, clear localStorage before starting a new game.
 ## Images
 ![game play](https://media.giphy.com/media/Eqt7VSUuND2WdGmOlh/giphy.gif)
 
-![DRAW!](https://gph.is/g/Z5JYMn6)
+![DRAW!](https://media.giphy.com/media/aTOGAY7Ang8ZaWYaWx/giphy.gif)
