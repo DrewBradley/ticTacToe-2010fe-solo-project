@@ -6,9 +6,10 @@ class Player {
         this.wins = wins || [];
     }
     saveWinsToStorage(){
-        localStorage.setItem(this.id, (JSON.stringify(this)))
+        localStorage.setItem(JSON.stringify(this.id), (JSON.stringify(this.wins)))
     }
     retrieveWinsFromStorage(){
-        localStorage.getItem(this.id);
+        var retrievedWins = localStorage.getItem(JSON.stringify(this.id))
+        return JSON.parse(retrievedWins);
     }
 }

@@ -8,7 +8,7 @@ var squares = document.querySelectorAll('.square');
 
 gameGrid.addEventListener('click', selectSquare);
 
-var game = new Game(Date.now())
+game = new Game();
 
 function showGame(game) {
     var p1Moves = game.player1.moves;
@@ -16,15 +16,37 @@ function showGame(game) {
     showPlayerOne(p1Moves);
     showPlayerTwo(p2Moves);
     game.findWin(p1Moves, p2Moves);
-    showWins(game);
 }
 
-function player1Win(){
+function selectSquare(event){
+    var square = event.target;
+    if (square.classList.contains('square')){
+        if (game.playedMoves.includes(square.id)){
+            return;
+        }
+        game.playedMoves.push(square.id);
+        if (game.currentPlayer === 'p1'){
+            game.player1.moves.push(square.id);
+
+        }
+        if (game.currentPlayer === 'p2'){
+            game.player2.moves.push(square.id);
+        }
+    }
+    showGame(game);
+    game.switchPlayer();
+}
+
+function player1Win(p1Wins){
     announcement.innerText = "❌ WINS!"
+    var winNumber1 = p1Wins.length;
+    player1Box.children[1].innerText = `${winNumber1} WINS`;
 }
 
-function player2Win(){
+function player2Win(p2Wins){
     announcement.innerText = "⭕️ WINS!"
+    var winNumber2 = p2Wins.length;
+    player2Box.children[1].innerText = `${winNumber2} WINS`;
 }
 
 function declareDraw(){
@@ -79,30 +101,6 @@ function showPlayerTwo(p2Moves){
                 }
         })
     }
-}
-
-function showWins(game){
-    player1Box.children[1].innerText = `${game.player1.wins.length} WINS`;
-    player2Box.children[1].innerText = `${game.player2.wins.length} WINS`;
-}
-
-function selectSquare(event){
-    var square = event.target;
-    if (square.classList.contains('square')){
-        if (game.playedMoves.includes(square.id)){
-            return;
-        }
-        game.playedMoves.push(square.id);
-        if (game.currentPlayer === 'p1'){
-            game.player1.moves.push(square.id);
-
-        }
-        if (game.currentPlayer === 'p2'){
-            game.player2.moves.push(square.id);
-        }
-    }
-    showGame(game);
-    game.switchPlayer();
 }
 
 function showTurn(player) {
