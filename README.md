@@ -25,5 +25,5 @@ If you need to, clear localStorage before starting a new game.
 ## Wins/Challenges
 
 ## Images
-![game play]{https://gph.is/g/E1pWknx}
-![DRAW!]{https://gph.is/g/Z5JYMn6}
+![game play] {https://gph.is/g/E1pWknx}
+![DRAW!] {https://gph.is/g/Z5JYMn6}
