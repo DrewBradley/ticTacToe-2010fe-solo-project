@@ -4,13 +4,12 @@ class Player {
         this.token = token;
         this.moves = moves || [];
         this.wins = wins || [];
-        this.winCount = 0;
     }
     saveWinsToStorage(){
-        localStorage.setItem(JSON.stringify(this.id), (JSON.stringify(this.winCount)))
+        localStorage.setItem(JSON.stringify(this.id), (JSON.stringify(this.wins)))
     }
     retrieveWinsFromStorage(){
-        var retrievedWinCount = localStorage.getItem(JSON.stringify(this.id))
-        return JSON.parse(retrievedWinCount);
+        var retrievedWins = localStorage.getItem(JSON.stringify(this.id))
+        return JSON.parse(retrievedWins);
     }
 }
