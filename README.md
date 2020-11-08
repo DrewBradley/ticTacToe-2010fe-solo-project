@@ -25,6 +25,6 @@ If you need to, clear localStorage before starting a new game.
 ## Wins/Challenges
 
 ## Images
-![game play](https://github.com/DrewBradley/ticTacToe-2010fe-solo-project/blob/main/images/Animated%20GIF-source%20(1).gif)
+![game play](https://media.giphy.com/media/Eqt7VSUuND2WdGmOlh/source.mp4)
 
 ![DRAW!](https://gph.is/g/Z5JYMn6)
