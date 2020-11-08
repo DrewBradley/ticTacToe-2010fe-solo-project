@@ -7,8 +7,25 @@ var gameGrid = document.querySelector('.game-grid');
 var squares = document.querySelectorAll('.square');
 
 gameGrid.addEventListener('click', selectSquare);
+window.addEventListener('load', pageLoad);
 
-var game = new Game(Date.now())
+game = new Game();
+
+function pageLoad() {
+    if (localStorage){
+        for (var i = 0; i < localStorage.length; i++){
+            var key = localStorage.key(i);
+            var oldWinCount = JSON.parse(localStorage.getItem(key));
+            if(JSON.parse(key) === "One"){
+                player1Box.children[1].innerText = `${oldWinCount} WINS`;
+                game.player1.winCount = oldWinCount;
+            }else if (JSON.parse(key) === "Two"){
+                player2Box.children[1].innerText = `${oldWinCount} WINS`;
+                game.player2.winCount = oldWinCount;
+            }
+        }
+    }
+}
 
 function showGame(game) {
     var p1Moves = game.player1.moves;
@@ -16,15 +33,35 @@ function showGame(game) {
     showPlayerOne(p1Moves);
     showPlayerTwo(p2Moves);
     game.findWin(p1Moves, p2Moves);
-    showWins(game);
 }
 
-function player1Win(){
+function selectSquare(event){
+    var square = event.target;
+    if (square.classList.contains('square')){
+        if (game.playedMoves.includes(square.id)){
+            return;
+        }
+        game.playedMoves.push(square.id);
+        if (game.currentPlayer === 'p1'){
+            game.player1.moves.push(square.id);
+
+        }
+        if (game.currentPlayer === 'p2'){
+            game.player2.moves.push(square.id);
+        }
+    }
+    showGame(game);
+    game.switchPlayer();
+}
+
+function player1Win(p1Wins){
     announcement.innerText = "❌ WINS!"
+    player1Box.children[1].innerText = `${p1Wins} WINS`;
 }
 
-function player2Win(){
+function player2Win(p2Wins){
     announcement.innerText = "⭕️ WINS!"
+    player2Box.children[1].innerText = `${p2Wins} WINS`;
 }
 
 function declareDraw(){
@@ -79,30 +116,6 @@ function showPlayerTwo(p2Moves){
                 }
         })
     }
-}
-
-function showWins(game){
-    player1Box.children[1].innerText = `${game.player1.wins.length} WINS`;
-    player2Box.children[1].innerText = `${game.player2.wins.length} WINS`;
-}
-
-function selectSquare(event){
-    var square = event.target;
-    if (square.classList.contains('square')){
-        if (game.playedMoves.includes(square.id)){
-            return;
-        }
-        game.playedMoves.push(square.id);
-        if (game.currentPlayer === 'p1'){
-            game.player1.moves.push(square.id);
-
-        }
-        if (game.currentPlayer === 'p2'){
-            game.player2.moves.push(square.id);
-        }
-    }
-    showGame(game);
-    game.switchPlayer();
 }
 
 function showTurn(player) {
