@@ -18,7 +18,7 @@ Change directories:
  - ```cd ticTacToe-2010fe-solo-project```
 
 Open ```index.html``` in your browser of choice. 
- -```open index.html```
+ - ```open index.html```
 
 If you need to, clear localStorage before starting a new game.
 
