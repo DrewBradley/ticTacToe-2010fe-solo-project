@@ -15,13 +15,13 @@ function pageLoad() {
     if (localStorage){
         for (var i = 0; i < localStorage.length; i++){
             var key = localStorage.key(i);
-            var oldWinCount = JSON.parse(localStorage.getItem(key));
+            var oldWins = JSON.parse(localStorage.getItem(key));
             if(JSON.parse(key) === "One"){
-                player1Box.children[1].innerText = `${oldWinCount} WINS`;
-                game.player1.winCount = oldWinCount;
+                player1Box.children[1].innerText = `${oldWins.length} WINS`;
+                game.player1.wins = oldWins;
             }else if (JSON.parse(key) === "Two"){
-                player2Box.children[1].innerText = `${oldWinCount} WINS`;
-                game.player2.winCount = oldWinCount;
+                player2Box.children[1].innerText = `${oldWins.length} WINS`;
+                game.player2.wins = oldWins;
             }
         }
     }
@@ -56,12 +56,12 @@ function selectSquare(event){
 
 function player1Win(p1Wins){
     announcement.innerText = "❌ WINS!"
-    player1Box.children[1].innerText = `${p1Wins} WINS`;
+    player1Box.children[1].innerText = `${p1Wins.length} WINS`;
 }
 
 function player2Win(p2Wins){
     announcement.innerText = "⭕️ WINS!"
-    player2Box.children[1].innerText = `${p2Wins} WINS`;
+    player2Box.children[1].innerText = `${p2Wins.length} WINS`;
 }
 
 function declareDraw(){
