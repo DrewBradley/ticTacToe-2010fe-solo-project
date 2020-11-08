@@ -7,8 +7,25 @@ var gameGrid = document.querySelector('.game-grid');
 var squares = document.querySelectorAll('.square');
 
 gameGrid.addEventListener('click', selectSquare);
+window.addEventListener('load', pageLoad);
 
 game = new Game();
+
+function pageLoad() {
+    if (localStorage){
+        for (var i = 0; i < localStorage.length; i++){
+            var key = localStorage.key(i);
+            var oldWinCount = JSON.parse(localStorage.getItem(key));
+            if(JSON.parse(key) === "One"){
+                player1Box.children[1].innerText = `${oldWinCount} WINS`;
+                game.player1.winCount = oldWinCount;
+            }else if (JSON.parse(key) === "Two"){
+                player2Box.children[1].innerText = `${oldWinCount} WINS`;
+                game.player2.winCount = oldWinCount;
+            }
+        }
+    }
+}
 
 function showGame(game) {
     var p1Moves = game.player1.moves;
@@ -39,14 +56,12 @@ function selectSquare(event){
 
 function player1Win(p1Wins){
     announcement.innerText = "❌ WINS!"
-    var winNumber1 = p1Wins.length;
-    player1Box.children[1].innerText = `${winNumber1} WINS`;
+    player1Box.children[1].innerText = `${p1Wins} WINS`;
 }
 
 function player2Win(p2Wins){
     announcement.innerText = "⭕️ WINS!"
-    var winNumber2 = p2Wins.length;
-    player2Box.children[1].innerText = `${winNumber2} WINS`;
+    player2Box.children[1].innerText = `${p2Wins} WINS`;
 }
 
 function declareDraw(){
