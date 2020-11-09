@@ -4,7 +4,7 @@ class Game {
         this.player1 = p1 || new Player('One', '❌');
         this.player2 = p2 || new Player('Two', '⭕️');
         this.playedMoves = [];
-        this.currentPlayer = loser || 'p1';
+        this.currentPlayer = loser || this.player1;
     }
 
     newGame() {
@@ -15,22 +15,15 @@ class Game {
         clearBoard();
     }
 
-    findWin(p1Moves, p2Moves){
-        var string1 = p1Moves.sort();
-        var string2 = p2Moves.sort();
-        var sorted1 = string1.toString();
-        var sorted2 = string2.toString();
+    findWin(moves){
+        var string = moves.sort();
+        var sorted = string.toString();
         var winningArray = ['a,b,c', 'd,e,f', 'g,h,i', 'a,d,g', 'b,e,h', 'c,f,i', 'a,e,i', 'c,e,g'];
         for (var i = 0; i < winningArray.length; i++){
-            if (sorted1.includes(winningArray[i])){
-                this.player1.wins.push(sorted1)
-                this.player1.saveWinsToStorage();
-                player1Win(this.player1.wins);
-                this.newGame(this.player1, this.player2);
-            }else if (sorted2.includes(winningArray[i])){
-                this.player2.wins.push(sorted2)
-                this.player2.saveWinsToStorage();
-                player2Win(this.player2.wins);
+            if (sorted.includes(winningArray[i])){
+                this.currentPlayer.wins.push(sorted)
+                this.currentPlayer.saveWinsToStorage();
+                showWin(this.currentPlayer.token)
                 this.newGame(this.player1, this.player2);
             }else{
                 this.findDraw();
@@ -46,12 +39,11 @@ class Game {
     }
     
     switchPlayer() {
-        showTurn(this.currentPlayer);
-        if (this.currentPlayer === 'p1') {
-            this.currentPlayer = 'p2';
+        if (this.currentPlayer === this.player1) {
+            this.currentPlayer = this.player2;
             return;
-        }else if (this.currentPlayer === 'p2') {
-            this.currentPlayer = 'p1';
+        }else if (this.currentPlayer === this.player2) {
+            this.currentPlayer = this.player1;
             return;
         }
     }

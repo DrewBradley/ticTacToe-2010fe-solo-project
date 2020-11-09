@@ -1,15 +1,22 @@
 // QUERY SELECTORS
 var announcement = document.querySelector('.announcement');
 var winCounter = document.querySelectorAll('.wins-counter');
-var player1Box = document.querySelector('.player-section-one');
-var player2Box = document.querySelector('.player-section-two');
+var player1Box = document.querySelector('.player1');
+var player2Box = document.querySelector('.player2');
 var gameGrid = document.querySelector('.game-grid');
 var squares = document.querySelectorAll('.square');
+var startButton = document.querySelector('.start-button')
+var startScreen = document.querySelector('.start-game');
+var player1Token = document.querySelector('#p1-token');
+var player2Token = document.querySelector('#p2-token');
+var player1Title = document.querySelector('#p1-title');
+var player2Title = document.querySelector('#p2-title')
+
+var game = new Game();
 
 gameGrid.addEventListener('click', selectSquare);
 window.addEventListener('load', pageLoad);
-
-game = new Game();
+startButton.addEventListener('click', choosePlayers);
 
 function pageLoad() {
     if (localStorage){
@@ -25,47 +32,55 @@ function pageLoad() {
             }
         }
     }
+}  
+
+function choosePlayers() {
+    game.player1.token = player1Token.value;
+    game.player2.token = player2Token.value;
+    showPlayers();
+    showGame(game);
+}
+
+function showPlayers(){
+    startScreen.classList.add("hidden");
+    gameGrid.classList.remove("hidden");
+    player1Title.innerHTML = `<img src="assets/${game.player1.token}.png">`;
+    player2Title.innerHTML = `<img src="assets/${game.player2.token}.png">`;
 }
 
 function showGame(game) {
-    var p1Moves = game.player1.moves;
-    var p2Moves = game.player2.moves;
-    showPlayerOne(p1Moves);
-    showPlayerTwo(p2Moves);
-    game.findWin(p1Moves, p2Moves);
+    showPlayed(game.currentPlayer);
+    game.findWin(game.currentPlayer.moves);
 }
 
 function selectSquare(event){
     var square = event.target;
-    if (square.classList.contains('square')){
+    if (square.classList.contains("square")){
         if (game.playedMoves.includes(square.id)){
             return;
         }
         game.playedMoves.push(square.id);
-        if (game.currentPlayer === 'p1'){
+        if (game.currentPlayer === game.player1){
             game.player1.moves.push(square.id);
 
         }
-        if (game.currentPlayer === 'p2'){
+        if (game.currentPlayer === game.player2){
             game.player2.moves.push(square.id);
         }
     }
     showGame(game);
     game.switchPlayer();
+    showTurn();
 }
 
-function player1Win(p1Wins){
-    announcement.innerText = "❌ WINS!"
-    player1Box.children[1].innerText = `${p1Wins.length} WINS`;
-}
-
-function player2Win(p2Wins){
-    announcement.innerText = "⭕️ WINS!"
-    player2Box.children[1].innerText = `${p2Wins.length} WINS`;
+function showWin(token){
+    announcement.innerText = `${token} WINS!`
+    player1Box.children[1].innerText = `${game.player1.wins.length} WINS`;
+    player2Box.children[1].innerText = `${game.player2.wins.length} WINS`;
 }
 
 function declareDraw(){
-    announcement.innerText = "DRAW!"
+    announcement.innerText = "DRAW!";
 }
 
 function timeout(ms) {
@@ -79,11 +94,7 @@ async function clearBoard(){
     squares.forEach(node => {
         node.innerText = '';
     })
-    if(game.currentPlayer === 'p1'){
-        announcement.innerText = "❌'s TURN!"
-    }else{
-        announcement.innerText = "⭕️'s TURN!"
-    }    
+    announcement.innerText = `${game.currentPlayer.token}'s TURN!`   
 }
 
 function disableSquares(){
@@ -98,37 +109,23 @@ function enableSquares(){
     })
 }
 
-function showPlayerOne(p1Moves){
-    for(var i = 0; i < p1Moves.length; i++){
+function showPlayed(player){
+    for(var i = 0; i < player.moves.length; i++){
         squares.forEach(node => {
-            if (node.id === p1Moves[i]){
-                    node.innerText = '❌';
+            if (node.id === player.moves[i]){
+                    node.innerHTML = `<img src="assets/${player.token}.png">`;
                 }
         })
     }
 }
 
-function showPlayerTwo(p2Moves){
-    for(var i = 0; i < p2Moves.length; i++){
-        squares.forEach(node => {
-            if (node.id === p2Moves[i]){
-                    node.innerText = '⭕️';
-                }
-        })
+function showTurn() {
+    if (announcement.innerText.includes("WINS!")){
+        return 
     }
-}
-
-function showTurn(player) {
-    if (player === 'p1') {
-        if (announcement.innerText !== "❌ WINS!")
-        if (announcement.innerText !== "DRAW!")
-        announcement.innerText="⭕️'s TURN!"
+    if (announcement.innerText.includes("DRAW!")){
+        return
+    }
+    announcement.innerText=`${game.currentPlayer.token}'s TURN!`
         return;
-    }
-    if (player == 'p2') {
-        if (announcement.innerText !== '⭕️ WINS!')
-        if (announcement.innerText !== "DRAW!")
-        announcement.innerText="❌'s TURN!"
-        return;
-    }
 }
