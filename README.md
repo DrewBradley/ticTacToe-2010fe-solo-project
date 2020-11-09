@@ -23,6 +23,13 @@ Open ```index.html``` in your browser of choice.
 If you need to, clear localStorage before starting a new game.
 
 ## Wins/Challenges
+Wins:
+ - Using localStorage to have scores persist through refreshing the page.
+ - Keeping DOM and data model seperated throughout the project.
+
+Challenges:
+ - Using CSS grid to create a responsive site that adjusts to different screen sizes, without distorting the gameboard.
+ - Writing DRY js when dealing with DOM or data for each player in the game.
 
 ## Images
 ![game play](https://media.giphy.com/media/Eqt7VSUuND2WdGmOlh/giphy.gif)
