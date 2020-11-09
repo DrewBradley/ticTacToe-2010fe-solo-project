@@ -1,11 +1,16 @@
 html, body {
+    font-family: 'Amatic SC', cursive;
     background-image: url(images/IMG_4427.jpg);
     background-size: 100% 100vh;
     margin: 0;
 
 }
 
-.player-section-one {
+.hidden {
+    display: none !important;
+}
+
+.player-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,19 +21,13 @@ html, body {
     width: 20%;
     height: 80%;
     top: 10%;
+}
+
+.player1 {
     left: 0;
 }
-.player-section-two {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255, 0.7);
-    border-radius: 10px;
-    position: fixed;
-    width: 20%;
-    height: 80%;
-    top: 10%;
+
+.player2 {
     right: 0;
 }
 
@@ -48,7 +47,40 @@ html, body {
     margin-right: 22.5%;
     padding-top: 0.5%;
     background-color: rgb(255, 255, 255, 0.7);
+}
 
+.start-game {
+    font-family: 'Amatic SC', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    height: 50%;
+}
+
+.player-box {
+    font-size: 4em;
+    display: flex;
+    margin: 10%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+}
+
+.start-game button {
+    font-family: 'Amatic SC', serif;
+    font-size: 2em;
+    height: 25%;
+    width: 50%;
+    margin: 10px;
+    background-color: inherit;
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.floating-heads {
+    display: flex;
 }
 
 .announcement {

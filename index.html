@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/tictactoe-icon.png" type="image/png" sizes="16x16">
-    <title>TicTacToe</title>
+    <title>TicTacTuring</title>
 </head>
 <body>
-    <section class="player-section-one player1">
-        <h1 class="player-title">❌</h1>
-        <h2 class="wins-counter">0 WINS</h2>
+    <section class="player-section player1">
+            <h1 class="player-title" id="p1-title">1</h1>
+            <h2 class="wins-counter">0 WINS</h2>
     </section>
-    <section class="player-section-two player2">
-        <h1 class="player-title">⭕️</h1>
+    <section class="player-section player2">
+        <h1 class="player-title" id="p2-title">2</h1>
         <h2 class="wins-counter">0 WINS</h2>
     </section>
     <section class="game-board">
-        <h1 class="announcement">❌'s TURN!</h1>
-        <article class="game-grid">
+        <h1 class="announcement">Choose Your Player</h1>
+        <article class="game-grid hidden">
             <button class="square" id="i"></button>
             <button class="square" id="h"></button>
             <button class="square" id="g"></button>
@@ -28,6 +29,31 @@
             <button class="square" id="c"></button>
             <button class="square" id="b"></button>
             <button class="square" id="a"></button>
+        </article>
+        <article class="start-game">
+            <div class="player-box">
+                <label for="player1-token">Player 1</label>
+                <select name="player1-token" id="p1-token">
+                    <option value="scott">Scott</option>
+                    <option value="hannah">Hannah</option>
+                    <option value="kayla">Kayla</option>
+                </select>
+                <label for="player2-token">Player 2</label>
+                <select name="player2-token" id="p2-token">
+                    <option value="scott">Scott</option>
+                    <option value="hannah">Hannah</option>
+                    <option value="kayla">Kayla</option>
+                </select>
+            </div>
+            <button class="start-button">Start Game!</button>
+            <div class="floating-heads">
+                <h1>Scott</h1>
+                <img src="assets/scott.png" alt="cool skater dude!">
+                <h1>Hannah</h1>
+                <img src="assets/hannah.png" alt="mom!">
+                <h1>Kayla</h1>
+                <img src="assets/kayla.png" alt="wine aunt!">
+            </div>
         </article>
     </section>
     <script src="src/player.js"></script>
