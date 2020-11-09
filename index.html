@@ -10,11 +10,11 @@
 </head>
 <body>
     <section class="player-section player1">
-            <h1 class="player-title" id="p1-title">1</h1>
+            <h1 class="player-title" id="p1-title">Player 1</h1>
             <h2 class="wins-counter">0 WINS</h2>
     </section>
     <section class="player-section player2">
-        <h1 class="player-title" id="p2-title">2</h1>
+        <h1 class="player-title" id="p2-title">Player 2</h1>
         <h2 class="wins-counter">0 WINS</h2>
     </section>
     <section class="game-board">
@@ -46,14 +46,20 @@
                 </select>
             </div>
             <button class="start-button">Start Game!</button>
-            <div class="floating-heads">
-                <h1>Scott</h1>
-                <img src="assets/scott.png" alt="cool skater dude!">
-                <h1>Hannah</h1>
-                <img src="assets/hannah.png" alt="mom!">
-                <h1>Kayla</h1>
-                <img src="assets/kayla.png" alt="wine aunt!">
-            </div>
+            <section class="floating-heads">
+                <div class="player-profile">
+                    <p>Scott</p>
+                    <img src="assets/scott.png" alt="cool skater dude!">
+                </div>
+                <div class="player-profile">
+                    <p>Hannah</p>
+                    <img src="assets/hannah.png" alt="mom!">
+                </div>
+                <div class="player-profile">
+                    <p>Kayla</p>
+                    <img src="assets/kayla.png" alt="wine aunt!">
+                </div>
+            </section>
         </article>
     </section>
     <script src="src/player.js"></script>

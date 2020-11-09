@@ -55,13 +55,12 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    height: 50%;
 }
 
 .player-box {
-    font-size: 4em;
+    font-size: 3em;
     display: flex;
-    margin: 10%;
+    margin: 0 10%;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
@@ -70,8 +69,7 @@ html, body {
 
 .start-game button {
     font-family: 'Amatic SC', serif;
-    font-size: 2em;
-    height: 25%;
+    font-size: 3em;
     width: 50%;
     margin: 10px;
     background-color: inherit;
@@ -81,6 +79,12 @@ html, body {
 
 .floating-heads {
     display: flex;
+    margin: 0;
+}
+
+.player-profile {
+    text-align: center;
+    font-size: 2em;
 }
 
 .announcement {
