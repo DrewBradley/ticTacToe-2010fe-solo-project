@@ -39,3 +39,7 @@ Challenges:
 ![WIN!](https://media.giphy.com/media/5WUUmzraYH1O2XWLQ5/giphy.gif)
 
 ![DRAW](https://media.giphy.com/media/6nW00MWlGgIDQ1jP8T/giphy.gif)
+
+![Mobile splash](https://media.giphy.com/media/CpVSLCRnfgzuaPZIUH/giphy.gif)
+
+![Mobile game play](https://media.giphy.com/media/syst97jtITYgekVNqD/giphy.gif)
