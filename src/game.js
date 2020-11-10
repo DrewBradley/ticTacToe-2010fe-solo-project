@@ -25,6 +25,7 @@ class Game {
                 this.currentPlayer.saveWinsToStorage();
                 showWin(this.currentPlayer.token)
                 this.newGame(this.player1, this.player2);
+                return;
             }else{
                 this.findDraw();
             };
