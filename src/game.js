@@ -1,8 +1,8 @@
 class Game {
     constructor(p1, p2, loser) {
         this.id = 'game';
-        this.player1 = p1 || new Player('One', '❌');
-        this.player2 = p2 || new Player('Two', '⭕️');
+        this.player1 = p1 || new Player('One');
+        this.player2 = p2 || new Player('Two');
         this.playedMoves = [];
         this.currentPlayer = loser || this.player1;
     }
@@ -45,6 +45,19 @@ class Game {
         }else if (this.currentPlayer === this.player2) {
             this.currentPlayer = this.player1;
             return;
+        }
+    }
+
+    retrievePlayerWins(){
+        if (localStorage){
+            for (var i = 0; i < localStorage.length; i++){
+                var key = localStorage.key(i);
+                if(JSON.parse(key) === "One"){
+                    this.player1.retrieveWinsFromStorage(key);
+                }else if (JSON.parse(key) === "Two"){
+                    this.player2.retrieveWinsFromStorage(key);
+                }
+            }
         }
     }
 
