@@ -1,9 +1,11 @@
-# Tic Tac Toe
+# Tic Tac Turing
 ## Overview
-Tic Tac Toe brings the classic game into the 20th century. 
+Have you ever wondered which 2010FE Mod 1 instructor would win in a battle? Well, this will definitely not answer that question!
+Tic Tac Turing brings the classic game of tic tac toe to life, and allows you to play as any one of your favorite 2010FE Mod 1 instructors. 
+Who will you be???
 
 ### Game
-Players can win by getting three (3) of their tokens in a row, column, or diagonal. If all squares are filled, then the game is declared a draw.
+Players can win by getting three (3) of their tokens in a row, column, or diagonal. If all squares are filled, and neither player has won, then the game is declared a draw.
 ### Features
 Scores are displayed on either side of the board under the corresponding player's token symbol.
 
@@ -32,6 +34,6 @@ Challenges:
  - Writing DRY js when dealing with DOM or data for each player in the game.
 
 ## Images
-![game play](https://media.giphy.com/media/Eqt7VSUuND2WdGmOlh/giphy.gif)
+![game play](https://media.giphy.com/media/LjCaZcS7EPq5tcDMGD/giphy.gif)
 
-![DRAW!](https://media.giphy.com/media/aTOGAY7Ang8ZaWYaWx/giphy.gif)
+![DRAW!](https://media.giphy.com/media/5WUUmzraYH1O2XWLQ5/giphy.gif)
