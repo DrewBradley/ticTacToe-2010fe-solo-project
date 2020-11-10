@@ -18,7 +18,7 @@ class Game {
     findWin(moves){
         var string = moves.sort();
         var sorted = string.toString();
-        var winningArray = ['a,b,c', 'd,e,f', 'g,h,i', 'a,d,g', 'b,e,h', 'c,f,i', 'a,e,i', 'c,e,g'];
+        var winningArray = ['a,b,c', 'd,e,f', 'g,h,i', 'a,d,g', 'b,e,h', 'c,f,i', 'a,e,i', 'c,e,g', 'a,e,g,i', 'a,c,e,i'];
         for (var i = 0; i < winningArray.length; i++){
             if (sorted.includes(winningArray[i])){
                 this.currentPlayer.wins.push(sorted)
