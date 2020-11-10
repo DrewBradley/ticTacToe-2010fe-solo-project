@@ -28,10 +28,14 @@ If you need to, clear localStorage before starting a new game.
 Wins:
  - Using localStorage to have scores persist through refreshing the page.
  - Keeping DOM and data model seperated throughout the project.
+ - Getting the site to function the way it was expected to.
 
 Challenges:
  - Using CSS grid to create a responsive site that adjusts to different screen sizes, without distorting the gameboard.
  - Writing DRY js when dealing with DOM or data for each player in the game.
+ - Using media queries after having built the site for desktop.
+ - Encountering issues with certain diagonal win senarios returning a draw.
+ - Updating the README.md from the main branch on GitHub.
 
 ## Images
 ![game play](https://media.giphy.com/media/LjCaZcS7EPq5tcDMGD/giphy.gif)
