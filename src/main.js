@@ -21,7 +21,7 @@ function pageLoad() {
     if (localStorage){
         for (var i = 0; i < localStorage.length; i++){
             var key = localStorage.key(i);
-            var oldWins = JSON.parse(localStorage.getItem(key));
+            var oldWins = game.currentPlayer.retrieveWinsFromStorage(key);
             if(JSON.parse(key) === "One"){
                 player1Box.children[1].innerText = `${oldWins.length} WINS`;
                 game.player1.wins = oldWins;
