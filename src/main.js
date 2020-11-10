@@ -18,19 +18,8 @@ window.addEventListener('load', pageLoad);
 startButton.addEventListener('click', choosePlayers);
 
 function pageLoad() {
-    if (localStorage){
-        for (var i = 0; i < localStorage.length; i++){
-            var key = localStorage.key(i);
-            var oldWins = game.currentPlayer.retrieveWinsFromStorage(key);
-            if(JSON.parse(key) === "One"){
-                player1Box.children[1].innerText = `${oldWins.length} WINS`;
-                game.player1.wins = oldWins;
-            }else if (JSON.parse(key) === "Two"){
-                player2Box.children[1].innerText = `${oldWins.length} WINS`;
-                game.player2.wins = oldWins;
-            }
-        }
-    }
+    game.retrievePlayerWins();
+    updateScore();
 }  
 
 function choosePlayers() {
@@ -72,9 +61,13 @@ function selectSquare(event){
 
 function showWin(token){
     announcement.innerText = `${token} WINS!`
+    updateScore();
+};
+
+function updateScore(){
     player1Box.children[1].innerText = `${game.player1.wins.length} WINS`;
     player2Box.children[1].innerText = `${game.player2.wins.length} WINS`;
-};
+}
 
 function declareDraw(){
     announcement.innerText = "DRAW!";
