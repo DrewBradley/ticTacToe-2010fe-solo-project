@@ -36,12 +36,12 @@ function choosePlayers() {
 function showPlayers(){
     startScreen.classList.add("hidden");
     gameGrid.classList.remove("hidden");
-    player1Title.innerHTML = `<img src="assets/${game.player1.token}.png">`;
-    player2Title.innerHTML = `<img src="assets/${game.player2.token}.png">`;
+    player1Title.innerHTML = `<img src="assets/${game.player1.token}.png" alt="${game.player1.token}">`;
+    player2Title.innerHTML = `<img src="assets/${game.player2.token}.png" alt="${game.player2.token}">`;
 };
 
 function showGame(game) {
-    showPlayed(game.currentPlayer);
+    showPlayedSquares(game.currentPlayer);
     game.findWin(game.currentPlayer.moves);
 };
 
@@ -77,16 +77,6 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-async function clearBoard(){
-    disableSquares();
-    await timeout(1000);
-    enableSquares();
-    squares.forEach(node => {
-        node.innerText = '';
-    })
-    announcement.innerText = `${game.currentPlayer.token}'s TURN!`   
-};
-
 function disableSquares(){
     squares.forEach(node => {
         node.disabled = true;
@@ -99,11 +89,21 @@ function enableSquares(){
     })
 };
 
-function showPlayed(player){
+async function clearBoard(){
+    disableSquares();
+    await timeout(1000);
+    enableSquares();
+    squares.forEach(node => {
+        node.innerText = '';
+    })
+    announcement.innerText = `${game.currentPlayer.token}'s TURN!`   
+};
+
+function showPlayedSquares(player){
     for(var i = 0; i < player.moves.length; i++){
         squares.forEach(node => {
             if (node.id === player.moves[i]){
-                node.innerHTML = `<img src="assets/${player.token}.png">`;
+                node.innerHTML = `<img src="assets/${player.token}.png" alt="${player.token}">`;
             };
         })
     };
