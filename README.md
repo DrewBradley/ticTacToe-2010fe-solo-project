@@ -12,6 +12,13 @@ Scores are displayed on either side of the board under the corresponding player'
 ## Technologies
 Tic Tac Toe was built using JavaScript on an HTML framework with CSS styling.
 
+## Architecture
+
+The JavaScript is handled by three file: ```main.js```, ```game.js```, and ```player.js```.
+  * ```main.js``` handles all DOM manipulation, and also houses all querySelectors and event listeners. Any time something changes visually on the page, that is handled by functions within ```main.js```. This separation prevents the DOM from being manipulated by methods that are meant to update data, and vice versa.
+  * ```game.js``` does the majority of the data model work.  It instantiates a game class, and uses the associated methods to update the data model, look for patterns, and track user input.
+  * ```player.js``` uses a class constructor to instantiate a new player class. It also stores and retrieves the data associated with each player from ```localStorage```, by calling a method from the player class. 
+
 ## Download
 Clone the repository to your local machine:
  - ```git clone git@github.com:DrewBradley/ticTacToe-2010fe-solo-project.git```
